@@ -20,7 +20,7 @@ chrome.declarativeContent.onPageChanged.removeRules(undefined, function () {
     conditions: [new chrome.declarativeContent.PageStateMatcher({
       // developer.chrome.com URL 에서만 버튼 활성화
       // pageUrl: { hostEquals: 'developer.chrome.com' },
-      pageUrl: { schemes: ['https', 'https'] },
+      pageUrl: { schemes: ['https', 'http'] },
 
     })
     ],
