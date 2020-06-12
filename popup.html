@@ -3,23 +3,28 @@
 
 <head>
   <style>
-    .colorsizeURL-view {
+    .colorizeURL-body {
+      background-color: #282c34;
+      color: lightgray;
+    }
+
+    .colorizeURL-view {
       /*
       height: 50px;
-      width: 100px;
       */
+      min-width: 250px;
       font-size: large;
       font-weight: 700;
       outline: none;
-      background-color: '#333333';
     }
   </style>
 </head>
 
-<body>
+<body class="colorizeURL-body">
   <button id="changeColor">blogger seach: enabled</button>
   <div id="shortcut"></div>
-  <div id="colorizeURL" class="colorsizeURL-view"></div>
+  <br>
+  <div id="colorizeURL" class="colorizeURL-view"></div>
 
   <script src="common.js"></script>
   <script src="popup.js"></script>
