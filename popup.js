@@ -2,9 +2,18 @@
 // imported.src = 'common.js';
 // document.head.appendChild(imported);
 
+let shortcut = document.getElementById('shortcut');
 let changeColor = document.getElementById('changeColor');
 let colorizeURL = document.getElementById('colorizeURL');
 
+function setShortCutDisplay() {
+    let shortcut_text = 'ctrl+shift+u';
+    if (osName == 'mac') {
+        shortcut_text = 'command+shift+u';
+    }
+    shortcut.textContent = 'show this Popup : ' + shortcut_text;
+}
+setShortCutDisplay();
 
 chrome.storage.sync.get('color', function (data) {
     changeColor.style.backgroundColor = data.color;

@@ -31,3 +31,5 @@ const colorList = [
     colors.cyan,
     colors.purple
 ];
+
+let osName = 'mac';

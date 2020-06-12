@@ -16,6 +16,25 @@
             "128": "images/get_started128.png"
         }
     },
+    "commands": {
+        "_execute_page_action": {
+            "suggested_key": {
+                "windows": "Ctrl+Shift+U",
+                "mac": "Command+Shift+U",
+                "chromeos": "Ctrl+Shift+U",
+                "linux": "Ctrl+Shift+U"
+            }
+        },
+        "ysoftman-command-test1": {
+            "suggested_key": {
+                "windows": "Ctrl+Shift+Up",
+                "mac": "Command+Shift+Up",
+                "chromeos": "Ctrl+Shift+Up",
+                "linux": "Ctrl+Shift+Up"
+            },
+            "description": "command test"
+        }
+    },
     "icons": {
         "16": "images/get_started16.png",
         "32": "images/get_started32.png",

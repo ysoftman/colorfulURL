@@ -14,6 +14,14 @@ chrome.runtime.onInstalled.addListener(function () {
     });
 });
 
+
+// host os 파악
+chrome.runtime.getPlatformInfo(function (info) {
+  console.log("platformInfo:", info);
+  osName = info.os;
+});
+
+
 // Use the chrome.declarativeContent API to take actions depending on the content of a page, without requiring permission to read the page's content.
 chrome.declarativeContent.onPageChanged.removeRules(undefined, function () {
   chrome.declarativeContent.onPageChanged.addRules([{
@@ -28,16 +36,20 @@ chrome.declarativeContent.onPageChanged.removeRules(undefined, function () {
   }]);
 });
 
+// _execute_browser_action, _execute_page_action 는 예약어로 콜백되지 않는다.
+chrome.commands.onCommand.addListener(function (command) {
+  console.log("shortcut:", command);
+});
 
 
-chrome.omnibox.onInputEntered.addListener(function (text, disposition) {
-  backpage.console.log("text:", text, "  disposition:", disposition);
+chrome.omnibox.onInputEntered.addListener(function (query, target) {
+  console.log("query:", query, "  target:", target);
   chrome.storage.sync.get('enable', function (data) {
     if (data.enable == false) {
-      backpage.console.log("disabled...")
+      console.log("disabled...")
       return;
     }
-    let gotourl = 'https://yoonbh2714.blogspot.com/search?q=' + text;
+    let gotourl = 'https://yoonbh2714.blogspot.com/search?q=' + query;
     // chrome.tabs.create({ url: gotourl });
     // 현재 탭에서 URL 로 이동
     chrome.tabs.update({ url: gotourl })
