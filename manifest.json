@@ -47,8 +47,7 @@
     "permissions": [
         "storage",
         "declarativeContent",
-        "tabs",
-        "activeTab"
+        "tabs"
     ],
     "manifest_version": 2
 }

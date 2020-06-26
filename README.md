@@ -27,8 +27,8 @@
 - zip 압축
 
  ```bash
- cd ~/workspace
- zip -r colorfulURL.zip ./colorfulURL -x "*.git*"
+ cd ~/workspace/colorfulURL
+ zip -r colorfulURL.zip . -x "*.git*"
  ```
 
 - <https://chrome.google.com/webstore/devconsole/> 에서 새항목 -> colorfulURL.zip 추가
