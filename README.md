@@ -16,22 +16,23 @@
 - 주소표시줄(omni box)에서 ysoftman + 공백 + 키워드를 쓰면 내 블로그에서 검색한다. ex) ysoftman linux
   ![colorfulURL-screenshot2](./colorfulURL-screenshot2.png)
 
-## 확장프로그램 패키지(.crx) 생성
-
-- chrome://extensions/ -> 개발자 모드 활성화 -> 확장프로그램 압축하면 다음 파일이 생성된다.
-  - 확장 프로그램: /Users/ysoftman/workspace/colorfulURL.crx
-  - 키 파일: /Users/ysoftman/workspace/colorfulURL.pem
-
-## 웹스토어 배포
+## 크롬 웹스토어 배포
 
 - zip 압축
 
  ```bash
- cd ~/workspace/colorfulURL
- zip -r colorfulURL.zip . -x "*.git*"
+ cd ~/workspace/
+ zip -r colorfulURL.zip colorfulURL -x "*.git*"
  ```
 
 - <https://chrome.google.com/webstore/devconsole/> 에서 새항목 -> colorfulURL.zip 추가
+
+## 확장프로그램 패키지(.crx) 생성
+
+- 크롬 웹스토어에 배포되면 crx 파일을 만들어 설치에 사용할 수 있다.(배포되지 않으면 크롬에서 설치는돼도 활성화 되지 않는다.)
+- chrome://extensions/ -> 개발자 모드 활성화 -> 확장프로그램 압축하면 다음 파일이 생성된다.
+  - 확장 프로그램: /Users/ysoftman/workspace/colorfulURL.crx
+  - 키 파일: /Users/ysoftman/workspace/colorfulURL.pem
 
 ## references
 

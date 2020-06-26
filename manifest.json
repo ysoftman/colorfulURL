@@ -24,15 +24,6 @@
                 "chromeos": "Ctrl+Shift+U",
                 "linux": "Ctrl+Shift+U"
             }
-        },
-        "ysoftman-command-test1": {
-            "suggested_key": {
-                "windows": "Ctrl+Shift+Up",
-                "mac": "Command+Shift+Up",
-                "chromeos": "Ctrl+Shift+Up",
-                "linux": "Ctrl+Shift+Up"
-            },
-            "description": "command test"
         }
     },
     "icons": {
