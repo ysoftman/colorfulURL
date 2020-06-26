@@ -46,7 +46,6 @@
     },
     "permissions": [
         "storage",
-        "fontSettings",
         "declarativeContent",
         "tabs",
         "activeTab"
