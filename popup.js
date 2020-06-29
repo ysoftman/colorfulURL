@@ -2,9 +2,14 @@
 // imported.src = 'common.js';
 // document.head.appendChild(imported);
 
+const enabled_text = "ysoftman blogger seach: enabled\r\nex) ysoftman linux";
+const disabled_text = "ysoftman blogger search: disabled";
+
 let shortcut = document.getElementById('shortcut');
-let changeColor = document.getElementById('changeColor');
+let enable_blogger_search = document.getElementById('enable_blogger_search');
 let colorizeURL = document.getElementById('colorizeURL');
+
+enable_blogger_search.setAttribute('style', 'white-space: pre;');
 
 function setShortCutDisplay() {
     let shortcut_text = 'ctrl+shift+u';
@@ -16,23 +21,35 @@ function setShortCutDisplay() {
 setShortCutDisplay();
 
 chrome.storage.sync.get('color', function (data) {
-    changeColor.style.backgroundColor = data.color;
-    changeColor.setAttribute('value', data.color);
+    enable_blogger_search.style.backgroundColor = data.color;
+    enable_blogger_search.setAttribute('value', data.color);
     // alert("color : " + data.color)
     backpage.console.log("color : ", data.color);
 });
 
-changeColor.onclick = function () {
-    chrome.storage.sync.get('enable', function (data) {
-        data.enable = !data.enable;
-        chrome.storage.sync.set({ enable: data.enable }, function () {
-            backpage.console.log("blogger seach enable : ", data.enable);
-            if (data.enable) {
-                changeColor.style.backgroundColor = colors.green;
-                changeColor.textContent = "blogger seach: enabled"
+function getEnable() {
+    chrome.storage.sync.get('enable_blogger_search', function (data) {
+        if (data.enable_blogger_search) {
+            enable_blogger_search.style.backgroundColor = colors.green;
+            enable_blogger_search.textContent = enabled_text
+        } else {
+            enable_blogger_search.style.backgroundColor = colors.red;
+            enable_blogger_search.textContent = disabled_text
+        }
+    });
+}
+getEnable();
+
+enable_blogger_search.onclick = function () {
+    chrome.storage.sync.get('enable_blogger_search', function (data) {
+        data.enable_blogger_search = !data.enable_blogger_search;
+        chrome.storage.sync.set({ enable_blogger_search: data.enable_blogger_search }, function () {
+            if (data.enable_blogger_search) {
+                enable_blogger_search.style.backgroundColor = colors.green;
+                enable_blogger_search.textContent = enabled_text
             } else {
-                changeColor.style.backgroundColor = colors.red;
-                changeColor.textContent = "blogger search: disabled"
+                enable_blogger_search.style.backgroundColor = colors.red;
+                enable_blogger_search.textContent = disabled_text
             }
         });
     });

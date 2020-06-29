@@ -13,7 +13,7 @@
 
 - 현재 URL을 컬러로 구분해 보여준다.
   ![colorfulURL-screenshot1](./colorfulURL-screenshot1.png)
-- 주소표시줄(omni box)에서 ysoftman + 공백 + 키워드를 쓰면 내 블로그에서 검색한다. ex) ysoftman linux
+- 주소표시줄(omni box)에서 ysoftman + 공백 + 키워드를 쓰면 ysoftman 블로그에서 검색한다. ex) ysoftman linux
   ![colorfulURL-screenshot2](./colorfulURL-screenshot2.png)
 
 ## 크롬 웹스토어 배포

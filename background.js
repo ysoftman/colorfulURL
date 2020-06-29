@@ -44,9 +44,9 @@ chrome.commands.onCommand.addListener(function (command) {
 
 chrome.omnibox.onInputEntered.addListener(function (query, target) {
   console.log("query:", query, "  target:", target);
-  chrome.storage.sync.get('enable', function (data) {
-    if (data.enable == false) {
-      console.log("disabled...")
+  chrome.storage.sync.get('enable_blogger_search', function (data) {
+    if (data.enable_blogger_search == false) {
+      console.log("enable_blogger_search : disabled...")
       return;
     }
     let gotourl = 'https://yoonbh2714.blogspot.com/search?q=' + query;
