@@ -14,14 +14,6 @@ chrome.runtime.onInstalled.addListener(function () {
     });
 });
 
-
-// host os 파악
-chrome.runtime.getPlatformInfo(function (info) {
-  console.log("platformInfo:", info);
-  osName = info.os;
-});
-
-
 // Use the chrome.declarativeContent API to take actions depending on the content of a page, without requiring permission to read the page's content.
 chrome.declarativeContent.onPageChanged.removeRules(undefined, function () {
   chrome.declarativeContent.onPageChanged.addRules([{
