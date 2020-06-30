@@ -12,11 +12,16 @@ let colorizeURL = document.getElementById('colorizeURL');
 enable_blogger_search.setAttribute('style', 'white-space: pre;');
 
 function setShortCutDisplay() {
-    let shortcut_text = 'ctrl+shift+u';
-    if (osName == 'mac') {
-        shortcut_text = 'command+shift+u';
-    }
-    shortcut.textContent = 'show this Popup : ' + shortcut_text;
+    // host os 파악
+    chrome.runtime.getPlatformInfo(function (info) {
+        console.log("platformInfo:", info);
+        osName = info.os;
+        let shortcut_text = 'ctrl+shift+u';
+        if (osName == 'mac') {
+            shortcut_text = 'command+shift+u';
+        }
+        shortcut.textContent = 'show this Popup : ' + shortcut_text;
+    });
 }
 setShortCutDisplay();
 

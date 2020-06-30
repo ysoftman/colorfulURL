@@ -31,11 +31,3 @@ const colorList = [
     colors.cyan,
     colors.purple
 ];
-
-let osName = 'mac';
-
-// host os 파악
-chrome.runtime.getPlatformInfo(function (info) {
-    console.log("platformInfo:", info);
-    osName = info.os;
-});
