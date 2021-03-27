@@ -76,7 +76,8 @@ function makeColorfulURL(parentele, url) {
     backpage.console.log("path:", path);
     backpage.console.log("query:", query);
     backpage.console.log("params:", params);
-    parentele.innerHTML += scheme[0] + "//";
+    parentele.innerHTML = "[colorized URL]<br>";
+    colorizeURL = scheme[0] + "//";
     eleCnt = 0;
     for (let i = 0; i < path.length; i++) {
         ++eleCnt;
@@ -89,14 +90,14 @@ function makeColorfulURL(parentele, url) {
         } else {
             ele += "/</div>";
         }
-        parentele.innerHTML += ele;
+        colorizeURL += ele;
         backpage.console.log("ele[", i, "]: ", ele);
     }
     if (query.length == 2) {
         ++eleCnt;
         let ele = "<div style=color:" + colorList[eleCnt % colorList.length] + "\>" + query[0];
         ele += "?</div>";
-        parentele.innerHTML += ele;
+        colorizeURL += ele;
         backpage.console.log("ele[", 0, "]: ", ele);
     }
     for (let i = 0; i < params.length; i++) {
@@ -107,7 +108,12 @@ function makeColorfulURL(parentele, url) {
         } else {
             ele += "&</div>";
         }
-        parentele.innerHTML += ele;
+        colorizeURL += ele;
         backpage.console.log("ele[", i, "]: ", ele);
     }
+    let decodedURL = "<br><br>[decoded URL]<br>";
+    decodedURL += colorizeURL;
+
+    parentele.innerHTML += colorizeURL;
+    parentele.innerHTML += decodeURI(decodedURL);
 }
