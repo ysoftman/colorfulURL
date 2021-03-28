@@ -29,7 +29,7 @@ cd ~/workspace/
 zip -r colorfulURL.zip colorfulURL -x "*.git*"
 ```
 
-- <https://chrome.google.com/webstore/devconsole/> 에서 새항목 -> colorfulURL.zip 추가
+- <https://chrome.google.com/webstore/devconsole/> -> 기존 항목 -> 패키지 -> 새 패키지 업로드 -> colorfulURL.zip 추가
 
 ## 확장프로그램 패키지(.crx) 생성
 
