@@ -68,52 +68,52 @@ chrome.tabs.query({ active: true, lastFocusedWindow: true }, tabs => {
 
 
 function makeColorfulURL(parentele, url) {
-    scheme = url.split('//');
-    path = scheme[scheme.length - 1].split('/');
-    query = path[path.length - 1].split('\?');
-    params = query[query.length - 1].split('\&');
-    backpage.console.log("scheme:", scheme);
+    let myURL = new URL(url)
+    let protocol = myURL.protocol.toString()
+    let hostname = myURL.hostname.toString()
+    let path = myURL.pathname.toString()
+    let params = myURL.searchParams.toString()
+    backpage.console.log("protocol:", protocol);
+    backpage.console.log("hostname:", hostname);
     backpage.console.log("path:", path);
-    backpage.console.log("query:", query);
     backpage.console.log("params:", params);
-    parentele.innerHTML = "[colorized URL]<br>";
-    colorizeURL = scheme[0] + "//";
-    eleCnt = 0;
-    for (let i = 0; i < path.length; i++) {
-        ++eleCnt;
-        let ele = "<div style=color:" + colorList[eleCnt % colorList.length] + "\>" + path[i];
-        if (i == path.length - 1) {
-            if (query.length > 0) {
-                continue;
-            }
-            ele += "</div>";
-        } else {
-            ele += "/</div>";
-        }
-        colorizeURL += ele;
-        backpage.console.log("ele[", i, "]: ", ele);
-    }
-    if (query.length == 2) {
-        ++eleCnt;
-        let ele = "<div style=color:" + colorList[eleCnt % colorList.length] + "\>" + query[0];
-        ele += "?</div>";
-        colorizeURL += ele;
-        backpage.console.log("ele[", 0, "]: ", ele);
-    }
-    for (let i = 0; i < params.length; i++) {
-        ++eleCnt;
-        let ele = "<div style=color:" + colorList[eleCnt % colorList.length] + "\>" + params[i];
-        if (i == params.length - 1) {
-            ele += "</div>";
-        } else {
-            ele += "&</div>";
-        }
-        colorizeURL += ele;
-        backpage.console.log("ele[", i, "]: ", ele);
-    }
-    let decodedURL = "<br><br>[decoded URL]<br>";
-    decodedURL += colorizeURL;
 
+    let eleCnt = 0;
+    let colorizeURL = protocol + "//";
+    ++eleCnt;
+    colorizeURL += "<div style=color:" + colorList[eleCnt % colorList.length] + "\>" + hostname + "/</div>";
+
+    let pathArr = path.split('/');
+    // backpage.console.log("pathArr:", pathArr);
+    for (let i = 0; i < pathArr.length; i++) {
+        if (pathArr[i] === '') continue;
+        ++eleCnt;
+        let ele = "<div style=color:" + colorList[eleCnt % colorList.length] + "\>" + pathArr[i];
+        if (i != pathArr.length - 1) {
+            ele += "/";
+        }
+        ele += "</div>";
+        colorizeURL += ele;
+        backpage.console.log("ele[", i, "]: ", ele);
+    }
+    let paramsArr = params.split('\&');
+    // backpage.console.log("paramsArr:", paramsArr);
+    for (let i = 0; i < paramsArr.length; i++) {
+        ++eleCnt;
+        let ele = "<div style=color:" + colorList[eleCnt % colorList.length] + "\>" + paramsArr[i];
+        if (i != paramsArr.length - 1) {
+            ele += "&";
+        }
+        ele += "</div>";
+        colorizeURL += ele;
+        backpage.console.log("ele[", i, "]: ", ele);
+    }
+
+    parentele.innerHTML = "[colorized URL]<br>";
     parentele.innerHTML += colorizeURL;
-    parentele.innerHTML += decodeURI(decodedURL);
+
+    let decodedURL = "<br><br>[decodeURIComponent]<br>";
+    decodedURL += colorizeURL;
+    parentele.innerHTML += decodeURIComponent(decodedURL);
+
 }
