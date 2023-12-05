@@ -40,6 +40,5 @@ zip -r colorfulURL.zip colorfulURL -x "*.git*"
 
 ## references
 
-- <https://developer.chrome.com/extensions/getstarted>
-- <https://developer.chrome.com/extensions/devguide>
-- <https://developer.chrome.com/extensions/omnibox>
+- <https://developer.chrome.com/docs/extensions/reference>
+

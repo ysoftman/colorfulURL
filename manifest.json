@@ -3,11 +3,11 @@
     "version": "0.1.5",
     "description": "show colorful URL",
     "background": {
-        "scripts": ["background.js"],
-        "persistent": true
+        "service_worker": "service_worker.js",
+        "type": "module"
     },
     "options_page": "options.html",
-    "page_action": {
+    "action": {
         "default_popup": "popup.html",
         "default_icon": {
             "16": "images/icon16.png",
@@ -17,7 +17,7 @@
         }
     },
     "commands": {
-        "_execute_page_action": {
+        "_execute_action": {
             "suggested_key": {
                 "windows": "Ctrl+Shift+U",
                 "mac": "Command+Shift+U",
@@ -40,5 +40,5 @@
         "declarativeContent",
         "tabs"
     ],
-    "manifest_version": 2
+    "manifest_version": 3
 }

@@ -1,7 +1,3 @@
-// let imported = document.createElement('script');
-// imported.src = 'common.js';
-// document.head.appendChild(imported);
-
 const enabled_text = "ysoftman blogger seach: enabled\r\nex) ysoftman linux";
 const disabled_text = "ysoftman blogger search: disabled";
 
@@ -29,7 +25,7 @@ chrome.storage.sync.get('color', function (data) {
     enable_blogger_search.style.backgroundColor = data.color;
     enable_blogger_search.setAttribute('value', data.color);
     // alert("color : " + data.color)
-    backpage.console.log("color : ", data.color);
+    console.log("color : ", data.color);
 });
 
 function getEnable() {
@@ -62,7 +58,7 @@ enable_blogger_search.onclick = function () {
 
 chrome.tabs.query({ active: true, lastFocusedWindow: true }, tabs => {
     let url = tabs[0].url;
-    backpage.console.log("url:", url);
+    console.log("url:", url);
     makeColorfulURL(colorizeURL, url);
 });
 
@@ -73,10 +69,10 @@ function makeColorfulURL(parentele, url) {
     let hostname = myURL.hostname.toString()
     let path = myURL.pathname.toString()
     let params = myURL.searchParams.toString()
-    backpage.console.log("protocol:", protocol);
-    backpage.console.log("hostname:", hostname);
-    backpage.console.log("path:", path);
-    backpage.console.log("params:", params);
+    console.log("protocol:", protocol);
+    console.log("hostname:", hostname);
+    console.log("path:", path);
+    console.log("params:", params);
 
     let eleCnt = 0;
     let colorizeURL = protocol + "//";
@@ -84,7 +80,7 @@ function makeColorfulURL(parentele, url) {
     colorizeURL += "<div style=color:" + colorList[eleCnt % colorList.length] + "\>" + hostname + "/</div>";
 
     let pathArr = path.split('/');
-    // backpage.console.log("pathArr:", pathArr);
+    // console.log("pathArr:", pathArr);
     for (let i = 0; i < pathArr.length; i++) {
         if (pathArr[i] === '') continue;
         ++eleCnt;
@@ -94,10 +90,10 @@ function makeColorfulURL(parentele, url) {
         }
         ele += "</div>";
         colorizeURL += ele;
-        backpage.console.log("ele[", i, "]: ", ele);
+        console.log("ele[", i, "]: ", ele);
     }
     let paramsArr = params.split('\&');
-    // backpage.console.log("paramsArr:", paramsArr);
+    // console.log("paramsArr:", paramsArr);
     for (let i = 0; i < paramsArr.length; i++) {
         ++eleCnt;
         let ele = "<div style=color:" + colorList[eleCnt % colorList.length] + "\>" + paramsArr[i];
@@ -106,7 +102,7 @@ function makeColorfulURL(parentele, url) {
         }
         ele += "</div>";
         colorizeURL += ele;
-        backpage.console.log("ele[", i, "]: ", ele);
+        console.log("ele[", i, "]: ", ele);
     }
 
     parentele.innerHTML = "[colorized URL]<br>";

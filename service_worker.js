@@ -1,8 +1,11 @@
 // 순수(vanilla) javascript 에서는 
 // html 통해서만 javascript 파일을 include 할 수 있다.
-let imported = document.createElement('script');
-imported.src = 'common.js';
-document.head.appendChild(imported);
+// manifest V3 에선 에러 발생! (추후 삭제)
+//let imported = document.createElement('script');
+//imported.src = 'common.js';
+//document.head.appendChild(imported);
+
+import './common.js';
 
 chrome.runtime.onInstalled.addListener(function () {
   chrome.storage.sync.set(
@@ -28,7 +31,7 @@ chrome.declarativeContent.onPageChanged.removeRules(undefined, function () {
   }]);
 });
 
-// _execute_browser_action, _execute_page_action 는 예약어로 콜백되지 않는다.
+
 chrome.commands.onCommand.addListener(function (command) {
   console.log("shortcut:", command);
 });

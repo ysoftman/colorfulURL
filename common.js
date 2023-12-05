@@ -5,14 +5,9 @@ console.log("ysoftman");
 
 아래와 같이 앱의 백그라운드 페이지로 console 로그를 찍어 확인한다.
 chrome.extension.getBackgroundPage().console.log("ysoftman");
-
-manifest.json background->persistent: false 인 경우
-chrome.extension.getBackgroundPage() 사용시 null 리턴할 수 있다.
-하지만 persistent:true 로 하면 리소스를 계속 사용하기 때문에
-chrome.webRequest 를 사용하지 않는다면 persistent:false 를 권고한다.
-https://developer.chrome.com/extensions/background_pages
 */
-let backpage = chrome.extension.getBackgroundPage();
+// manifest V3 부터 지원하지 않음, 팝업창 -> 마우스 우클릭 -> inspect 로 console 로그보자.
+//let backpage = chrome.extension.getBackgroundPage();
 
 let colors = {
     green: '#28a745',
